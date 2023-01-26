@@ -67,4 +67,4 @@ After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble 
 # Tutorials
 
 * [Autotuning the MPI/OpenMP version of XSBench](https://github.com/ytopt-team/ytopt-libensemble/tree/main/ytopt-libe-xsbench)
-* [Autotuning the GPU version of OpenMC]()
+* [Autotuning the GPU version of OpenMC](https://github.com/ytopt-team/ytopt-libensemble/tree/main/ytopt-libe-openmc)
