@@ -26,14 +26,13 @@ cd laptop
 After it is finished, one performance file results.csv is generated. The file looks like 
 ```
 p0,p1,p2,p3,p4,RUNTIME,elapsed_sec
-8,20,#pragma omp parallel for,sockets,master,20.224,24.39652395248413
-4,20, ,threads,master,20.194,45.44950008392334
-8,64, ,sockets,master,20.17,45.55336308479309
-8,40, ,threads,master,20.13,66.76408386230469
-2,40,#pragma omp parallel for,sockets,spread,20.155,67.15401411056519
-8,10,#pragma omp parallel for,threads,spread,20.212,88.18876695632935
-2,80, ,threads,master,20.296,88.57480216026306
-8,128, ,threads,master,20.452,109.7756142616272
-8,80, ,sockets,master,20.222,110.09131217002869
+4,100, ,cores,close,3.242,5.355260848999023
+8,64, ,sockets,master,1.913,8.534861087799072
+4,20, ,threads,master,3.323,8.549333095550537
+8,40, ,threads,master,1.54,11.50633192062378
+8,10,#pragma omp parallel for,threads,spread,1.614,14.497555017471313
+2,40,#pragma omp parallel for,sockets,spread,5.737,15.974946022033691
+8,160,#pragma omp parallel for,threads,master,1.333,17.22815704345703
+8,128,#pragma omp parallel for,threads,master,1.313,18.940433979034424
 ```
 where p0,p1,p2,p3,p4 are the tunable parameters; objective stands for the application execution time (in seconds); and elapsed_sec stands for the wall-clock time.
