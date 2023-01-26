@@ -18,8 +18,9 @@ Do the following steps:
 ```
 cd laptop
 * If you want to change the compiler mpicc (default), edit the file plopper.py. 
-* make sure to create the conda environemnt ytune before running a test
-* use the run script runs.sh to autotune XSBench
+* Make sure to create the conda environemnt ytune before running a test
+* Modify the run script runs.sh with the proper conda environment, number of wokers, MPI ranks, and the application timeout
+* Then, use the run script to autotune XSBench 
 ./runs.sh
 ```
 After it is finished, one performance file results.csv is generated. The file looks like 
