@@ -63,6 +63,7 @@ cd ..
 ```
 
 After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble successfully, the autotuning framework ytopt-libensemble is ready to use.
+Note: For the diagnosis purpose, look at the log files (*.log) or text files (*.txt) for any error under the current directory.
 
 # Tutorials
 
