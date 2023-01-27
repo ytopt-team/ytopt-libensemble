@@ -35,4 +35,4 @@ p0,p1,p2,p3,p4,RUNTIME,elapsed_sec
 8,160,#pragma omp parallel for,threads,master,1.333,17.22815704345703
 8,128,#pragma omp parallel for,threads,master,1.313,18.940433979034424
 ```
-where p0,p1,p2,p3,p4 are the tunable parameters; objective stands for the application execution time (in seconds); and elapsed_sec stands for the wall-clock time.
+where p0,p1,p2,p3,p4 are the tunable parameters; objective stands for the application execution time (in seconds); and elapsed_sec stands for the wall-clock time. For the diagnosis purpose, look at the log files (*.log) or text files (*.txt) for any error under the current directory.
