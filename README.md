@@ -3,7 +3,7 @@
 
 [libensemble](https://github.com/ytopt-team/libensemble.git) is a Python toolkit for coordinating workflows of asynchronous and dynamic ensembles of calculations in parallel. It helps users take advantage of massively parallel resources to solve design, decision, and inference problems and expands the class of problems that can benefit from increased parallelism. libensemble employs a manager/worker scheme that communicates via MPI, multiprocessing, or TCP. A manager allocate work to multiple workers. Workers control and monitor any level of work from small subnode tasks to huge many-node computations.
 
-By integrating libensemble with ytopt, the autotuning framework ytopt-libensemble not only accelerates the evaluation process of ytopt in parallel but also improves the accuracy of Random Forests surrage model by feeding more data to make the search more efficient.
+By integrating libensemble with ytopt, the autotuning framework ytopt-libensemble not only accelerates the evaluation process of ytopt in parallel but also improves the accuracy of Random Forests surrogate model by feeding more data to make the search more efficient.
 
 
 # Install instructions
