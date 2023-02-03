@@ -66,8 +66,9 @@ class Plopper:
         kernel_idx = self.sourcefile.rfind('/')
         kernel_dir = self.sourcefile[:kernel_idx]
 
-        #cmd1 = "mpicc -std=gnu99 -Wall -DMPI -O3 "  + \
-        cmd1 = "mpicc -std=gnu99 -Wall -fopenmp -DOPENMP -DMPI -O3 "  + \
+        #cmd1 = "mpicc -std=gnu99 -Wall -fopenmp -DOPENMP -DMPI -O3 "  + \
+        #cmd1 = "gcc-12 -std=gnu99 -Wall -fopenmp -DOPENMP -O3 "  + \
+        cmd1 = "mpicc -std=gnu99 -Wall -DMPI -O3 "  + \
                 " -o " + tmpbinary + " " + interimfile +" " + kernel_dir + "/Materials.c " \
                 + kernel_dir + "/XSutils.c " + " -I" + kernel_dir + \
                 " -lm "
