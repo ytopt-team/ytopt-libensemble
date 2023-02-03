@@ -79,7 +79,7 @@ class Plopper:
         #and len(compilation_status.stderr) == 0: #Second condition is to check for warnings
            # execution_status = subprocess.run(cmd2, shell=True, stdout=subprocess.PIPE)
            execution_status = subprocess.Popen(cmd2, shell=True, stdout=subprocess.PIPE)
-           app_timeout  = 60
+           app_timeout = 60
 
            try:
                 outs, errs = execution_status.communicate(timeout=app_timeout)

@@ -18,7 +18,7 @@ $filename1 =  $ARGV[0];
 	
         if ($line =~ /app_timeout =/) {
                 ($v1, $v2) = split('= ', $line);
-		print OUTFILE $v1, " = ", $ARGV[1], "\n";
+		print OUTFILE $v1, "= ", $ARGV[1], "\n";
 	} else {
                 print OUTFILE $line, "\n";
         }
