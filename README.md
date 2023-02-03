@@ -16,7 +16,7 @@ conda create --name ytune python=3.10
 conda activate ytune
 ```
 
-* Create a directory for ytopt tutorial as follows:
+* Create a directory for installing all required packages for ytopt-libensemble as follows:
 ```
 mkdir ytune
 cd ytune
