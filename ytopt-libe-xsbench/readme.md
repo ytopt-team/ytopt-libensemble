@@ -16,6 +16,9 @@ Follow the ytopt-libensemble installation instructions to install ytopt and libe
 
 Do the following steps:
 ```
+git clone https://github.com/ytopt-team/ytopt-libensemble.git
+cd ytopt-libensemble
+cd ytopt-libe-xsbench
 cd laptop
 * If you want to change the compiler mpicc (default), edit the file plopper.py. 
 * Make sure to create the conda environemnt ytune before running a test
