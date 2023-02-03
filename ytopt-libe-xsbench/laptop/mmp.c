@@ -24,9 +24,9 @@ int main( int argc, char* argv[] )
         #ifdef OPENMP
         // set the env variables for thread affinity
         setenv("OMP_PLACES","#P3",1);
-        system("echo $OMP_PLACES");
+        //system("echo $OMP_PLACES");
 	setenv("OMP_PROC_BIND","#P4",1);
-        system("echo $OMP_PROC_BIND");
+        //system("echo $OMP_PROC_BIND");
         #endif
 
 	// Process CLI Fields -- store in "Inputs" structure
