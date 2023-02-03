@@ -64,7 +64,7 @@ cd ..
 
 After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble successfully, the autotuning framework ytopt-libensemble is ready to use.
 
-* Case Study: Using ytopt-libensemble to autotune the  MPI/OpenMP version of XSBench:
+* Example: Using ytopt-libensemble to autotune the  MPI/OpenMP version of XSBench:
 ```
 git clone https://github.com/ytopt-team/ytopt-libensemble.git
 cd ytopt-libensemble
