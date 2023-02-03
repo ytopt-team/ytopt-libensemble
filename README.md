@@ -3,7 +3,7 @@
 
 [libensemble](https://github.com/ytopt-team/libensemble.git) is a Python toolkit for coordinating workflows of asynchronous and dynamic ensembles of calculations in parallel. It helps users take advantage of massively parallel resources to solve design, decision, and inference problems and expands the class of problems that can benefit from increased parallelism. libensemble employs a manager/worker scheme that communicates via MPI, multiprocessing, or TCP. A manager allocate work to multiple workers. Workers control and monitor any level of work from small subnode tasks to huge many-node computations.
 
-By integrating libensemble with ytopt, the autotuning framework ytopt-libensemble not only accelerates the evaluation process of ytopt in parallel but also improves the accuracy fo Random Forests surrage model by feeding more data to make the search more efficient.
+By integrating libensemble with ytopt, the autotuning framework ytopt-libensemble not only accelerates the evaluation process of ytopt in parallel but also improves the accuracy of Random Forests surrage model by feeding more data to make the search more efficient.
 
 
 # Install instructions
@@ -63,6 +63,20 @@ cd ..
 ```
 
 After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble successfully, the autotuning framework ytopt-libensemble is ready to use.
+
+* Case Study: Using ytopt-libensemble to autotune the  MPI/OpenMP version of XSBench [libensemble](https://github.com/ytopt-team/libensemble.git):
+```
+git clone https://github.com/ytopt-team/ytopt-libensemble.git
+cd ytopt-libensemble
+cd ytopt-libe-xsbench
+cd laptop
+* If you want to change the compiler mpicc (default), edit the file plopper.py. 
+* Make sure to create the conda environemnt ytune before running a test
+* Modify the run script runs.sh with the proper conda environment, number of wokers, MPI ranks, and the application timeout
+* Then, use the run script to autotune XSBench 
+./runs.sh
+```
+
 Note: For the diagnosis purpose, look at the log files (*.log) or text files (*.txt) for any error under the current directory.
 
 # Tutorials
