@@ -11,8 +11,16 @@ let nws=3
 let appto=60
 
 #--- process processexe.pl to change the number of nodes (no change)
+# set the MPI ranks per run
 ./processcp.pl ${nranks}
+
+# change application timeout
 ./plopper.pl plopper.py ${appto}
+
+# find the conda path
+cdpath=$(conda info | grep -i 'base environment')
+arr=(`echo ${cdpath}`)
+cpath="$(echo ${arr[3]})/etc/profile.d/conda.sh"
 
 #-----This part creates a submission script---------
 cat >batch.job <<EOF
@@ -42,7 +50,8 @@ export CONDA_ENV_NAME=ytune
 export PMI_NO_FORK=1 # Required for python kills on Theta
 
 # Activate conda environment
-source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
+#source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
+source $cpath
 export PYTHONNOUSERSITE=1
 conda activate \$CONDA_ENV_NAME
 
