@@ -9,7 +9,7 @@ By integrating libensemble with ytopt, the autotuning framework ytopt-libensembl
 # Install instructions
 The autotuning framework ytopt-libensemble requires the following components: ConfigSpace,scikit-optimize, autotune, ytopt, and libensemble.
 
-* We recommend creating isolated Python environments (python >=3.7) on your local machine using [conda](https://docs.conda.io/projects/conda/en/latest/index.html), for example:
+* We recommend creating isolated Python environments (python >=3.7) on your local machine using an up to date [conda](https://docs.conda.io/projects/conda/en/latest/index.html), for example:
 
 ```
 conda create --name ytune python=3.10
