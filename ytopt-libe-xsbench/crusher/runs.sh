@@ -10,8 +10,16 @@ let nws=5
 let appto=60
 
 #--- process processexe.pl to change the number of nodes (no change)
+# set the MPI ranks per run
 ./processcp.pl ${nranks}
+
+# change application timeout
 ./plopper.pl plopper.py ${appto}
+
+# find the conda path
+cdpath=$(conda info | grep -i 'base environment')
+arr=(`echo ${cdpath}`)
+cpath="$(echo ${arr[3]})/etc/profile.d/conda.sh"
 
 #-----This part creates a submission script---------
 cat >batch.job <<EOF
@@ -59,7 +67,6 @@ module unload darshan
 module unload xalt
 
 #load needed modules
-source /ccs/home/wuxf/anaconda3/etc/profile.d/conda.sh
 module load PrgEnv-amd/8.3.3
 module load cray-hdf5/1.12.0.7
 module load cmake
@@ -73,6 +80,8 @@ export PE_MPICH_GTL_DIR_amd_gfx90a="-L${CRAY_MPICH_ROOTDIR}/gtl/lib"
 export PE_MPICH_GTL_LIBS_amd_gfx90a="-lmpi_gtl_hsa"
 
 # Activate conda environment
+#source /ccs/home/wuxf/anaconda3/etc/profile.d/conda.sh
+source $cpath
 export PYTHONNOUSERSITE=1
 conda activate \$CONDA_ENV_NAME
 
