@@ -18,7 +18,7 @@ $filename1 =  $ARGV[0];
         chomp ($line);
 
         if ($line =~ /system/) {
-                print OUTFILE "    system(\"srun -N 8 -n 1 ", " -c ", $ARGV[1], " \$filename -m event > tmpoutfile.txt 2>&1\");", "\n";
+                print OUTFILE "    system(\"srun -N 8 -n 8 ", " -c ", $ARGV[1], " \$filename -m event > tmpoutfile.txt 2>&1\");", "\n";
 	} else {
                 print OUTFILE $line, "\n";
         }
