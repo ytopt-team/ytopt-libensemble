@@ -1,0 +1,6 @@
+p0,p1,p2,p3,p4,p5,p6,p7,RUNTIME,elapsed_sec
+64,cores,close,static, , ,#pragma omp for,MPI_Barrier(MPI_COMM_WORLD);,263.283,279.03199005126953
+4,sockets,master,dynamic,#pragma omp parallel for, ,#pragma omp for nowait, ,251.313,526.9945471286774
+48,threads,master,dynamic,#pragma omp parallel for,#pragma unroll,#pragma omp for nowait, ,263.561,557.5838749408722
+2,cores,master,dynamic,#pragma omp parallel for,#pragma unroll (6),#pragma omp for,MPI_Barrier(MPI_COMM_WORLD);,261.667,804.2200269699097
+128,threads,master,dynamic,#pragma omp parallel for,#pragma unroll (6),#pragma omp for nowait, ,261.273,834.7790329456329
