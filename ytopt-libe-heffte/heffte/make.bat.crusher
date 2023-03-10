@@ -1,6 +1,6 @@
 module load cray-fftw
 
-git clone https://bitbucket.org/icl/heffte.git
+git clone https://github.com/icl-utk-edu/heffte.git
 mkdir heffte/build
 cd heffte/build
 
