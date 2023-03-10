@@ -5,6 +5,18 @@
 
 By integrating libensemble with ytopt, the autotuning framework ytopt-libensemble not only accelerates the evaluation process of ytopt in parallel but also improves the accuracy of Random Forests surrogate model by feeding more data to make the search more efficient.
 
+# Directory
+
+```
+ytopt-libe-xsbench/
+    Autotuning ECP proxy app XSBench
+ytopt-libe-sw4lite/
+    Autotuning ECP proxy app SW4lite
+ytopt-libe-heffte/
+    Autotuning ECP app HeFFTe
+ytopt-libe-openmc/
+    Autotuning ECP app OpenMC
+```
 
 # Install instructions
 The autotuning framework ytopt-libensemble requires the following components: ConfigSpace,scikit-optimize, autotune, ytopt, and libensemble.
