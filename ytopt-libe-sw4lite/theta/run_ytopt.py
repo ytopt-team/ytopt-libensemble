@@ -52,15 +52,12 @@ req_settings = ['learner','max-evals']
 assert all([opt in user_args for opt in req_settings]), \
     "Required settings missing. Specify each setting in " + str(req_settings)
 
-# written by larson. Commented temporarily to check with Xingfu's part
 # Set options so workers operate in unique directories
 here = os.getcwd() + '/'
 libE_specs['use_worker_dirs'] = True
 libE_specs['sim_dirs_make'] = False  # Otherwise directories separated by each sim call
 libE_specs['ensemble_dir_path'] = './ensemble_' + secrets.token_hex(nbytes=4)
 
-
-#written by Xingfu
 #THIS PART IS FROM SW4lite problem.py file
 #HERE = os.path.dirname(os.path.abspath(__file__))
 

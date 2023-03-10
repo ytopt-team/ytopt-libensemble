@@ -1,4 +1,4 @@
-This directory includes all files for autotuning ECP proxy app XSBench using ytopt-libensemble on a laptop, ALCF Theta and OLCF Crusher.
+This directory includes all files for autotuning ECP proxy app XSBench (https://github.com/ANL-CESAR/XSBench) using ytopt-libensemble on a laptop, ALCF Theta and OLCF Crusher.
 
 # Directory
 ```

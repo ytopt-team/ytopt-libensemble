@@ -13,7 +13,7 @@ import os
 import glob
 import secrets
 import numpy as np
-import sys
+import time
 
 import multiprocessing
 multiprocessing.set_start_method('fork', force=True)
@@ -28,6 +28,7 @@ from ytopt_asktell import persistent_ytopt  # Generator function, communicates w
 
 import ConfigSpace as CS
 import ConfigSpace.hyperparameters as CSH
+from ConfigSpace import ConfigurationSpace, EqualsCondition
 from ytopt.search.optimizer import Optimizer
 
 # Parse comms, default options from commandline
@@ -58,45 +59,40 @@ libE_specs['use_worker_dirs'] = True
 libE_specs['sim_dirs_make'] = False  # Otherwise directories separated by each sim call
 libE_specs['ensemble_dir_path'] = './ensemble_' + secrets.token_hex(nbytes=4)
 
-#THIS PART IS FROM SW4lite problem.py file
-#HERE = os.path.dirname(os.path.abspath(__file__))
-
-#here = os.path.dirname(os.path.abspath(__file__)) + '/'
-#sys.path.insert(1, os.path.dirname(here)+ '/plopper')
-
-from plopper import Plopper
-
 # Copy or symlink needed files into unique directories
-
-libE_specs['sim_dir_symlink_files'] = [here + f for f in ['./src', './loh1', 'mmp.C', 'exe.pl', 'plopper.py', 'processexe.pl']]    
+libE_specs['sim_dir_symlink_files'] = [here + f for f in ['speed3d.sh', 'exe.pl', 'plopper.py', 'processexe.pl']]
 
 # Declare the sim_f to be optimized, and the input/outputs
 sim_specs = {
     'sim_f': init_obj,
-    'in': ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'],
+    'in': ['p0', 'p1', 'p2', 'p3', 'p4', 'p5','p6', 'p7', 'p8', 'p9'],
     'out': [('RUNTIME', float),('elapsed_sec', float)],
-
 }
 
 cs = CS.ConfigurationSpace(seed=1234)
-# number of threads
-p0= CSH.OrdinalHyperparameter(name='p0', sequence=[2, 4, 8, 16, 32, 48, 64, 96, 128, 192, 256], default_value=64)
-# omp placement
-p1= CSH.CategoricalHyperparameter(name='p1', choices=['cores','threads','sockets'], default_value='cores')
-# OMP_PROC_BIND
-p2= CSH.CategoricalHyperparameter(name='p2', choices=['close','spread','master'], default_value='close')
-# OMP_SCHEDULE
-p3= CSH.CategoricalHyperparameter(name='p3', choices=['dynamic','static'], default_value='static')
-#omp parallel
-p4= CSH.CategoricalHyperparameter(name='p4', choices=['#pragma omp parallel for',' '], default_value=' ')
-#unroll
-p5= CSH.CategoricalHyperparameter(name='p5', choices=['#pragma unroll (6)','#pragma unroll',' '], default_value=' ')
-#omp parallel
-p6= CSH.CategoricalHyperparameter(name='p6', choices=['#pragma omp for','#pragma omp for nowait'], default_value='#pragma omp for')
-#MPI Barrier
-p7= CSH.CategoricalHyperparameter(name='p7', choices=['MPI_Barrier(MPI_COMM_WORLD);',' '], default_value='MPI_Barrier(MPI_COMM_WORLD);')
+# arg1  precision
+p0 = CSH.CategoricalHyperparameter(name='p0', choices=["double", "float"], default_value="float")
+# arg2  3D array dimension size
+p1 = CSH.OrdinalHyperparameter(name='p1', sequence=[64,128,256,512,1024], default_value=128)
+# arg3  reorder
+p2 = CSH.CategoricalHyperparameter(name='p2', choices=["-no-reorder", "-reorder"," "], default_value=" ")
+# arg4 alltoall
+p3 = CSH.CategoricalHyperparameter(name='p3', choices=["-a2a", "-a2av", " "], default_value=" ")
+# arg5 p2p
+p4 = CSH.CategoricalHyperparameter(name='p4', choices=["-p2p", "-p2p_pl"," "], default_value=" ")
+# arg6 reshape logic
+p5 = CSH.CategoricalHyperparameter(name='p5', choices=["-pencils", "-slabs"," "], default_value=" ")
+# arg7
+p6 = CSH.CategoricalHyperparameter(name='p6', choices=["-r2c_dir 0", "-r2c_dir 1","-r2c_dir 2", " "], default_value=" ")
+# arg8
+p7 = CSH.CategoricalHyperparameter(name='p7', choices=["-ingrid 2 1 1", "-ingrid 1 2 1", "-ingrid 1 1 2", " "], default_value=" ")
+# arg9 
+p8 = CSH.CategoricalHyperparameter(name='p8', choices=["-outgrid 2 1 1", "-outgrid 1 2 1", "-outgrid 1 1 2"," "], default_value=" ")
+#number of threads
+#p9= CSH.UniformIntegerHyperparameter(name='p9', lower=2, upper=8, default_value=8, q=2)
+p9= CSH.OrdinalHyperparameter(name='p9', sequence=[2, 4, 8, 16, 32, 48, 64, 96, 128, 192, 256], default_value=64)
 
-cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7])
+cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9])
 
 ytoptimizer = Optimizer(
     num_workers=num_sim_workers,
@@ -104,21 +100,17 @@ ytoptimizer = Optimizer(
     learner=user_args['learner'],
     liar_strategy='cl_max',
     acq_func='gp_hedge',
-    #These values are added by me later
     set_KAPPA=1.96,
-    set_SEED=12345,
+    set_SEED=2345,
     set_NI=10,
 )
 
 # Declare the gen_f that will generate points for the sim_f, and the various input/outputs
 gen_specs = {
     'gen_f': persistent_ytopt,
-    #'out': [('p0', "<U9", (1,)), ('p1', "<U9", (1,)), ('p2', "<U9", (1,)),
-    #        ('p3', "<U9", (1,)), ('p4', "<U30", (1,)), ('p5', "<U30", (1,)), ('p6', "<U30", (1,)), ('p7', "<U30", (1,)), ],
-
-    'out': [('p0', int, (1,)), ('p1', "<U9", (1,)), ('p2', "<U9", (1,)),
-            ('p3', "<U9", (1,)), ('p4', "<U30", (1,)), ('p5', "<U30", (1,)), ('p6', "<U30", (1,)), ('p7', "<U30", (1,)), ],
-
+    'out': [('p0', "<U24", (1,)), ('p1', int, (1,)),('p2', "<U24", (1,)),('p3', "<U24", (1,)),
+		('p4', "<U24", (1,)),('p5', "<U24", (1,)),('p6', "<U24", (1,)),
+		('p7', "<U30", (1,)), ('p8', "<U30", (1,)),('p9', int, (1,))],
     'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function
@@ -154,5 +146,3 @@ if is_manager:
     #b = np.vstack(map(list, H[gen_specs['persis_in']]))
     #print(b)
     #np.savetxt('results.csv',b, header=','.join(dtypes.names), delimiter=',',fmt=','.join(['%s']*b.shape[1]))
-
-

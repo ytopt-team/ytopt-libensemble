@@ -1,0 +1,47 @@
+p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,RUNTIME,elapsed_sec
+float,128, , , , , , , ,8,-106.011,7.12690806388855
+float,64,-reorder,-a2av,-p2p,-pencils,-r2c_dir 1,-ingrid 4 4 1,-outgrid 16 1 1,4,-71.0159,9.097367763519287
+float,512, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 2 2 4,-outgrid 2 4 2,8,-111.372,13.994345426559448
+float,512, ,-a2a, ,-slabs, ,-ingrid 2 4 2,-outgrid 2 4 2,6,-83.7798,23.13545536994934
+double,64,-no-reorder, , ,-pencils,-r2c_dir 2,-ingrid 4 2 2,-outgrid 4 4 1,4,-62.3911,26.313437461853027
+double,64, ,-a2av, ,-slabs,-r2c_dir 1,-ingrid 16 1 1,-outgrid 16 1 1,4,-48.1283,29.472681522369385
+double,128,-no-reorder, ,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 4 2 2,-outgrid 2 2 4,6,-95.5236,35.153297662734985
+float,512, ,-a2a,-p2p,-slabs, ,-ingrid 2 2 4,-outgrid 8 2 1,6,-99.7042,43.96502065658569
+float,256, ,-a2a,-p2p, , ,-ingrid 8 2 1,-outgrid 2 4 2,6,-122.165,47.49382162094116
+double,128, ,-a2a,-p2p,-slabs,-r2c_dir 2,-ingrid 2 4 2,-outgrid 2 4 2,6,-63.6221,50.84223413467407
+float,128, ,-a2a, ,-pencils, ,-ingrid 2 2 4,-outgrid 2 4 2,6,-79.1718,56.56740427017212
+float,512, ,-a2a,-p2p, , ,-ingrid 4 4 1,-outgrid 16 1 1,4,-112.989,62.58310580253601
+float,512, ,-a2a,-p2p, , ,-ingrid 16 1 1,-outgrid 16 1 1,4,-107.005,68.86595273017883
+float,512, ,-a2a,-p2p, ,-r2c_dir 0,-ingrid 16 1 1,-outgrid 2 4 2,4,-102.307,75.19997525215149
+double,512, ,-a2a,-p2p, , ,-ingrid 2 4 2,-outgrid 16 1 1,4,-81.3475,84.73274350166321
+p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,RUNTIME,elapsed_sec
+float,64,-reorder,-a2av,-p2p,-pencils,-r2c_dir 1,-ingrid 4 4 1,-outgrid 16 1 1,4,-75.152,10.467089414596558
+float,128, , , , , , , ,8,-105.196,10.541253089904785
+float,512, ,-a2a, ,-slabs, ,-ingrid 2 4 2,-outgrid 2 4 2,6,-84.4853,17.01966166496277
+float,512, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 2 2 4,-outgrid 2 4 2,8,-109.445,17.99844455718994
+double,128,-no-reorder, , , ,-r2c_dir 1,-ingrid 8 2 1,-outgrid 4 4 1,4,-83.8428,23.130885124206543
+float,256,-no-reorder,-a2a,-p2p_pl, ,-r2c_dir 1,-ingrid 4 2 2, ,4,-61.5994,24.967863082885742
+float,64, , ,-p2p_pl,-slabs,-r2c_dir 0,-ingrid 4 2 2,-outgrid 8 2 1,8,-85.297,26.36178684234619
+double,256, ,-a2a, ,-pencils,-r2c_dir 0,-ingrid 4 4 1,-outgrid 8 2 1,8,-68.0743,30.49337339401245
+float,512, ,-a2a, ,-pencils,-r2c_dir 0,-ingrid 16 1 1,-outgrid 4 2 2,8,-113.911,33.69885730743408
+float,64, , , ,-pencils,-r2c_dir 0,-ingrid 2 4 2,-outgrid 4 2 2,8,-76.8636,36.431158781051636
+double,512, ,-a2a, ,-pencils,-r2c_dir 0, , ,8,-64.6156,44.123175859451294
+float,512,-no-reorder, , ,-pencils,-r2c_dir 0,-ingrid 4 2 2,-outgrid 16 1 1,8,-61.3667,46.67972493171692
+float,512, ,-a2av,-p2p_pl,-pencils, ,-ingrid 4 2 2,-outgrid 4 2 2,8,-129.514,50.04693245887756
+float,512, ,-a2a,-p2p_pl, ,-r2c_dir 0,-ingrid 4 4 1,-outgrid 4 2 2,8,-132.943,52.75612711906433
+p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,RUNTIME,elapsed_sec
+float,128, , , , , , , ,8,-189.664,13.231571197509766
+float,64,-reorder,-a2av,-p2p,-pencils,-r2c_dir 1,-ingrid 2 4 4,-outgrid 32 1 1,4,-79.5767,17.99342393875122
+float,512, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 4 2 4,-outgrid 8 2 2,8,-225.88,21.42294430732727
+float,512, ,-a2a, ,-slabs, ,-ingrid 8 2 2,-outgrid 8 2 2,6,-170.031,28.658928394317627
+double,64,-no-reorder, , ,-pencils,-r2c_dir 2,-ingrid 4 4 2,-outgrid 2 4 4,4,-105.641,34.25151538848877
+double,64, ,-a2av, ,-slabs,-r2c_dir 1,-ingrid 32 1 1,-outgrid 32 1 1,4,-57.8592,39.85853576660156
+double,128,-no-reorder, ,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 4 4 2,-outgrid 4 2 4,6,-177.826,45.55372428894043
+float,512, ,-a2a,-p2p,-slabs, ,-ingrid 4 2 4,-outgrid 16 2 1,6,-192.312,52.87426972389221
+float,512, ,-a2a,-p2p,-pencils, ,-ingrid 32 1 1,-outgrid 16 2 1,4,-216.708,57.48496389389038
+float,512, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 4 4 2,-outgrid 2 4 4,8,-220.494,64.63732624053955
+double,512, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 16 2 1,-outgrid 4 2 4,8,-131.129,72.59051299095154
+float,512, ,-a2a,-p2p,-pencils,-r2c_dir 1, ,-outgrid 2 4 4,8,-204.817,79.80435991287231
+float,128, ,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 4 2 4,-outgrid 2 4 4,8,-203.598,83.07922768592834
+float,512, , ,-p2p,-pencils,-r2c_dir 0,-ingrid 4 2 4,-outgrid 2 4 4,8,-223.572,87.77241492271423
+float,128,-reorder,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 4 2 4,-outgrid 2 4 4,8,-205.29,91.11103391647339
