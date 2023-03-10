@@ -1,4 +1,4 @@
-This directory includes all files for autotuning ECP proxy app SW4lite using ytopt-libensemble on a laptop, ALCF Theta and OLCF Crusher.
+This directory includes all files for autotuning ECP proxy app SW4lite (https://github.com/geodynamics/sw4lite) using ytopt-libensemble on a laptop, ALCF Theta and OLCF Crusher.
 
 # Directory
 ```
