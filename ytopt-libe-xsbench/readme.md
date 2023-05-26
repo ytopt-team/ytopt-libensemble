@@ -6,6 +6,8 @@ laptop/
     Autotuning XSBench on a laptop for demonstration
 theta/
     Autotuning XSBench on ALCF Theta
+ytopt/	
+    Autotuning XSBench using ytopt only on ALCF Theta
 crusher/	
     Autotuning XSBench on OLCF Crusher 
 

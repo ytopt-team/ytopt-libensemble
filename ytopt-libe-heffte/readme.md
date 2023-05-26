@@ -7,6 +7,8 @@ heffte/
     Source code for HeFFTe
 laptop/	
     Autotuning HeFFTe on a laptop for demonstration
+ytopt/
+    Autotuning HeFFTe using ytopt only on a laptop
 theta/
     Autotuning HeFFTe on ALCF Theta
 crusher/	

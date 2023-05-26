@@ -6,6 +6,8 @@ laptop/
     Autotuning SW4lite on a laptop for demonstration
 theta/
     Autotuning SW4lite on ALCF Theta
+ytopt/
+    Autotuning SW4lite using ytopt only on ALCF Theta
 crusher/	
     Autotuning SW4lite on OLCF Crusher 
 
