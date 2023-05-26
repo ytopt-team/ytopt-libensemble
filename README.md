@@ -7,7 +7,7 @@ By integrating libensemble with ytopt, the autotuning framework ytopt-libensembl
 
 # Directory
 
-This directory includes the ECP apps and proxy apps autotuned using ytopt and libensemble.
+This directory includes the ECP apps and proxy apps autotuned using ytopt-libensemble and ytopt.
 
 ```
 ytopt-libe-xsbench/
