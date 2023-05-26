@@ -85,9 +85,9 @@ p5 = CSH.CategoricalHyperparameter(name='p5', choices=["-pencils", "-slabs"," "]
 # arg7
 p6 = CSH.CategoricalHyperparameter(name='p6', choices=["-r2c_dir 0", "-r2c_dir 1","-r2c_dir 2", " "], default_value=" ")
 # arg8
-p7 = CSH.CategoricalHyperparameter(name='p7', choices=["-ingrid 4 1 1", "-ingrid 2 2 1", "-ingrid 2 1 2","-ingrid 1 2 2", " "], default_value=" ")
+p7 = CSH.CategoricalHyperparameter(name='p7', choices=["-ingrid 2 1 1", "-ingrid 1 2 1", "-ingrid 1 1 2", " "], default_value=" ")
 # arg9 
-p8 = CSH.CategoricalHyperparameter(name='p8', choices=["-outgrid 4 1 1", "-outgrid 2 2 1", "-outgrid 2 1 2","-outgrid 1 2 2"," "], default_value=" ")
+p8 = CSH.CategoricalHyperparameter(name='p8', choices=["-outgrid 2 1 1", "-outgrid 1 2 1", "-outgrid 1 1 2"," "], default_value=" ")
 #number of threads
 p9= CSH.UniformIntegerHyperparameter(name='p9', lower=2, upper=8, default_value=8, q=2)
 
@@ -109,7 +109,7 @@ gen_specs = {
     'gen_f': persistent_ytopt,
     'out': [('p0', "<U24", (1,)), ('p1', int, (1,)),('p2', "<U24", (1,)),('p3', "<U24", (1,)),
 		('p4', "<U24", (1,)),('p5', "<U24", (1,)),('p6', "<U24", (1,)),
-		('p7', "<U30", (1,)), ('p8', "<U30", (1,)), ('p9', int, (1,))],
+		('p7', "<U30", (1,)), ('p8', "<U30", (1,)),('p9', int, (1,))],
     'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function

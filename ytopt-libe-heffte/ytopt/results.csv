@@ -1,0 +1,33 @@
+p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,objective,elapsed_sec
+float,128, , , , , , , ,8,-53.4962,4.6338560581207275
+float,64,-reorder,-a2av,-p2p,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 1 2 2,4,-66.6845,6.308328151702881
+float,128,-reorder,-a2av,-p2p,-pencils,-r2c_dir 0, , ,4,-53.7062,8.347471237182617
+float,256,-reorder,-a2av, , ,-r2c_dir 2, ,-outgrid 2 1 2,2,-46.011,10.691962242126465
+double,1024,-no-reorder,-a2a,-p2p_pl,-slabs,-r2c_dir 0,-ingrid 2 2 1,-outgrid 4 1 1,2,-8.78095,266.4383192062378
+float,1024, ,-a2av,-p2p_pl, ,-r2c_dir 0, ,-outgrid 4 1 1,2,-50.5997,310.7976222038269
+float,64,-no-reorder,-a2av,-p2p,-slabs,-r2c_dir 0,-ingrid 1 2 2,-outgrid 4 1 1,6,-50.8031,313.08127903938293
+double,512,-reorder,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 1 2 2,-outgrid 1 2 2,6,-33.9881,322.42840814590454
+float,256,-no-reorder,-a2a,-p2p,-slabs,-r2c_dir 2,-ingrid 2 1 2,-outgrid 4 1 1,4,-28.1205,324.7460353374481
+double,256,-reorder,-a2av, ,-pencils,-r2c_dir 1, ,-outgrid 4 1 1,2,-32.3266,326.74395632743835
+float,64,-no-reorder,-a2av,-p2p,-slabs, ,-ingrid 1 2 2,-outgrid 1 2 2,8,-49.0396,328.7144000530243
+float,64,-no-reorder,-a2a,-p2p,-pencils,-r2c_dir 0,-ingrid 1 2 2,-outgrid 2 2 1,4,-49.5026,330.7629723548889
+float,64,-reorder,-a2av,-p2p_pl,-pencils, ,-ingrid 1 2 2,-outgrid 4 1 1,8,-66.534,332.7830011844635
+float,64,-reorder,-a2av, ,-pencils, ,-ingrid 2 2 1,-outgrid 4 1 1,4,-57.0292,334.7798321247101
+double,64,-reorder,-a2av, ,-pencils, ,-ingrid 1 2 2,-outgrid 4 1 1,4,-60.3246,336.7915551662445
+double,64,-reorder, , ,-pencils,-r2c_dir 1,-ingrid 1 2 2, ,4,-45.8918,338.82161927223206
+double,64,-reorder,-a2av,-p2p_pl,-pencils, ,-ingrid 2 1 2,-outgrid 4 1 1,6,-45.2146,340.81737422943115
+float,1024,-reorder,-a2av,-p2p,-pencils, ,-ingrid 1 2 2,-outgrid 1 2 2,2,-45.4892,388.88407826423645
+float,64,-reorder,-a2av,-p2p_pl,-pencils,-r2c_dir 0,-ingrid 1 2 2,-outgrid 4 1 1,4,-64.6737,391.24531412124634
+float,64,-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 1, ,-outgrid 4 1 1,4,-63.1334,392.8614721298218
+float,64,-reorder, ,-p2p_pl,-slabs,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,4,-57.1951,394.8307011127472
+float,64,-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 2 2 1,4,-50.0912,396.84445118904114
+float,64,-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 2,-ingrid 2 1 2,-outgrid 4 1 1,4,-62.267,398.84381318092346
+float,64,-reorder,-a2av,-p2p_pl,-slabs,-r2c_dir 2,-ingrid 1 2 2,-outgrid 4 1 1,2,-55.5651,400.8768880367279
+float,64,-no-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 0, ,-outgrid 4 1 1,2,-57.7127,402.84068608283997
+float,64,-no-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,4,-71.3857,404.84330129623413
+double,64,-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 0,-ingrid 1 2 2,-outgrid 4 1 1,4,-57.4877,406.8789632320404
+double,64,-no-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,2,-44.2728,408.84559512138367
+float,64,-reorder,-a2av,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,2,-62.8475,410.8524720668793
+float,64,-no-reorder,-a2a,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 2 2 1,-outgrid 4 1 1,6,-69.0054,412.84341406822205
+float,64,-no-reorder,-a2a, ,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,4,-60.3709,414.87979006767273
+float,128, ,-a2av,-p2p_pl,-pencils,-r2c_dir 1,-ingrid 1 2 2,-outgrid 4 1 1,6,-52.0016,416.8355851173401
