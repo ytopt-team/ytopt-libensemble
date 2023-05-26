@@ -76,12 +76,16 @@ pip install -e .
 cd ..
 ```
 
+* Install examples of [ytopt-libensemble](https://github.com/ytopt-team/ytopt-libensemble.git):
+```
+git clone https://github.com/ytopt-team/ytopt-libensemble.git
+cd ytopt-libensemble
+```
+
 After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble successfully, the autotuning framework ytopt-libensemble is ready to use.
 
 * Example: Using ytopt-libensemble to autotune the  MPI/OpenMP version of XSBench:
 ```
-git clone https://github.com/ytopt-team/ytopt-libensemble.git
-cd ytopt-libensemble
 cd ytopt-libe-xsbench
 cd laptop
 * If you want to change the compiler mpicc (default), edit the file plopper.py. 
