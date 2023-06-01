@@ -92,8 +92,9 @@ cd ytopt-libe-xsbench
 cd laptop
 * If you want to change the compiler mpicc (default), edit the file plopper.py. 
 * Make sure to create the conda environemnt ytune before running a test
-* Modify the run script runs.sh with the proper conda environment, number of wokers, MPI ranks, and the application timeout
+* Modify the run script runs.sh with the proper conda environment, number of wokers, MPI ranks, and the application timeout (recommanded to use the script to make these settings)
 * Then, use the run script to autotune XSBench 
+
 ./runs.sh
 ```
 
