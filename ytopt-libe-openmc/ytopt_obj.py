@@ -27,15 +27,12 @@ def myobj(point: dict, params: list, workerID: int):
         obj = Plopper('./openmc.sh', './')
         x = np.asarray_chkfinite(x)
         value = [point[param] for param in params]
-        #print(value)
         os.system("./processexe.pl exe.pl " +str(value[4])+ " " +str(value[5])+ " " +str(value[6]))
         os.environ["OMP_NUM_THREADS"] = str(value[4])
         params = [i.upper() for i in params]
-        #result = float(obj.findRuntime(value, params, workerID))
         result = obj.findRuntime(value, params, workerID)
         return result
 
-    x = np.array([point[f'p{i}'] for i in range(len(point))])
+    x = np.array(list(point.values()))
     results = plopper_func(x, params)
-    # print('CONFIG and OUTPUT', [point, results], flush=True)
     return results

@@ -60,13 +60,6 @@ libE_specs['ensemble_dir_path'] = './ensemble_' + secrets.token_hex(nbytes=4)
 #libE_specs['sim_dir_copy_files'] = [here + f for f in ['mmp.c', 'Materials.c', 'XSutils.c', 'XSbench_header.h']]
 libE_specs['sim_dir_symlink_files'] = [here + f for f in ['openmc.sh', 'settings.xml', 'materials.xml', 'geometry.xml', 'exe.pl', 'plopper.py', 'processexe.pl']]
 
-# Declare the sim_f to be optimized, and the input/outputs
-sim_specs = {
-    'sim_f': init_obj,
-    'in': ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'],
-    'out': [('RUNTIME', float),('elapsed_sec', float)],
-}
-
 cs = CS.ConfigurationSpace(seed=1234)
 # queuing logic type
 p0 = CSH.CategoricalHyperparameter(name='p0', choices=["openmc", "openmc-queueless"], default_value="openmc-queueless")
@@ -84,8 +77,8 @@ p5= CSH.OrdinalHyperparameter(name='p5',sequence=[1, 2], default_value=1)
 p6= CSH.CategoricalHyperparameter(name='p6', choices=['cores','threads','sockets'], default_value='threads')
 
 cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6])
-#cond = EqualsCondition(p3, p0, "openmc")
-#cs.add_conditions([cond])
+cond = EqualsCondition(p3, p0, "openmc")
+cs.add_conditions([cond])
 
 ytoptimizer = Optimizer(
     num_workers=num_sim_workers,
@@ -98,11 +91,24 @@ ytoptimizer = Optimizer(
     set_NI=10,
 )
 
+# Declare the sim_f to be optimized, and the input/outputs
+# Add p3_present indicator due to LibEnsemble API -- it is implicit from the ConfigSpace
+# but must be explicitly tracked due to current limitations.
+sim_specs = {
+    'sim_f': init_obj,
+    'in': ['p0', 'p1', 'p2',
+            'p3_present',
+            'p3', 'p4', 'p5', 'p6'],
+    'out': [('RUNTIME', float),('elapsed_sec', float)],
+}
+
 # Declare the gen_f that will generate points for the sim_f, and the various input/outputs
 gen_specs = {
     'gen_f': persistent_ytopt,
     'out': [('p0', "<U24", (1,)), ('p1', int, (1,)), ('p2', int, (1,)),
-            ('p3', int, (1,)), ('p4', int, (1,)), ('p5', int, (1,)), ('p6', "<U24", (1,))],
+            ('p3_present', bool, (1,)),
+            ('p3', int, (1,)),
+            ('p4', int, (1,)), ('p5', int, (1,)), ('p6', "<U24", (1,))],
     'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function
@@ -138,3 +144,4 @@ if is_manager:
     #b = np.vstack(map(list, H[gen_specs['persis_in']]))
     #print(b)
     #np.savetxt('results.csv',b, header=','.join(dtypes.names), delimiter=',',fmt=','.join(['%s']*b.shape[1]))
+
