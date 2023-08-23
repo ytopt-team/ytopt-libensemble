@@ -85,7 +85,7 @@ cd ytopt-libensemble
 ```
 
 After installing ConfigSpace, Scikit-optimize, autotune, ytopt, and libensemble successfully, the autotuning framework ytopt-libensemble is ready to use.
-If you have some issues about ConfigSpace, just upgrade configspace by the following command line pip install configspace==0.7.1 to solve most issues.
+If you have some issues about ConfigSpace, just upgrade configspace by the following command line "pip install configspace==0.7.1" in your conda environment to solve these issues.
 
 * Example: Using ytopt-libensemble to autotune the  MPI/OpenMP version of XSBench:
 ```
