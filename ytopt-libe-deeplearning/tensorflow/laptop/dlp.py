@@ -11,7 +11,9 @@ import keras
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
-from keras.optimizers import RMSprop
+#from keras.optimizers import RMSprop
+from tensorflow.keras.optimizers import RMSprop,Adam
+from keras.utils.np_utils import to_categorical
 
 batch_size = #P0
 num_classes = 10
@@ -30,8 +32,8 @@ print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
 
 # convert class vectors to binary class matrices
-y_train = keras.utils.to_categorical(y_train, num_classes)
-y_test = keras.utils.to_categorical(y_test, num_classes)
+y_train = to_categorical(y_train, num_classes)
+y_test = to_categorical(y_test, num_classes)
 
 model = Sequential()
 model.add(Dense(512, activation='relu', input_shape=(784,)))
