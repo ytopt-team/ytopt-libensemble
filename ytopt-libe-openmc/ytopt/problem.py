@@ -10,7 +10,7 @@ import math
 
 import ConfigSpace as CS
 import ConfigSpace.hyperparameters as CSH
-from ConfigSpace import ConfigurationSpace, EqualsCondition
+from ConfigSpace import ConfigurationSpace, EqualsCondition, InCondition, LessThanCondition
 from skopt.space import Real, Integer, Categorical
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -35,7 +35,9 @@ p6= CSH.CategoricalHyperparameter(name='p6', choices=['cores','threads','sockets
 
 cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6])
 #cond = EqualsCondition(p3, p0, "openmc")
-#cs.add_conditions([cond])
+cond = InCondition(p3, p0, ["openmc"])
+#cond1 = LessThanCondition(p5,p4,64)
+cs.add_conditions([cond])
 
 # problem space
 task_space = None
@@ -57,8 +59,9 @@ def myobj(point: dict):
 
   def plopper_func(x):
     x = np.asarray_chkfinite(x)  # ValueError if any NaN or Inf
-    #if str(point[x1[3]])=='nan':
-        #point[x1[3]]=' '
+#    x[np.isnan(x)] = 0
+#    if str(point[x1[3]])=='nan':
+#        point[x1[3]]= 0
     value = [point[x1[0]],point[x1[1]],point[x1[2]],point[x1[3]],point[x1[4]],point[x1[5]],point[x1[6]]]
     print('CONFIG:',point)
     #print(point[x1[4]])

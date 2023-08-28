@@ -9,7 +9,7 @@ use Time::HiRes qw(gettimeofday);
 $A_FILE = "tmpoutfile.txt";
 foreach $filename (@ARGV) {
  #  print "Start to preprocess ", $filename, "...\n";
-    system("srun -N 1 -n 2 --ntasks-per-gpu=2 --gpus-per-node=1 -c 8 --cpu-bind=threads sh $filename > tmpoutfile.txt 2>&1");
+    system("srun -N 1 -n 1 --ntasks-per-gpu=1 --gpus-per-node=1 -c 10 --cpu-bind=sockets sh $filename > tmpoutfile.txt 2>&1");
     my $v3 = 0;
     open (TEMFILE, '<', $A_FILE);
     while (<TEMFILE>) {
