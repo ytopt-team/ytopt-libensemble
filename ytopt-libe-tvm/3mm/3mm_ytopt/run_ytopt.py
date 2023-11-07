@@ -30,7 +30,9 @@ import ConfigSpace as CS
 import ConfigSpace.hyperparameters as CSH
 from ConfigSpace import ConfigurationSpace, EqualsCondition
 from ytopt.search.optimizer import Optimizer
+import time
 
+start = time.time()
 # Parse comms, default options from commandline
 nworkers, is_manager, libE_specs, user_args_in = parse_args()
 num_sim_workers = nworkers - 1  # Subtracting one because one worker will be the generator
@@ -65,21 +67,30 @@ libE_specs['sim_dir_symlink_files'] = [here + f for f in ['dlp.py', 'exe.pl', 'p
 # Declare the sim_f to be optimized, and the input/outputs
 sim_specs = {
     'sim_f': init_obj,
-    'in': ['p0', 'p1', 'p2', 'p3'],
+    'in': ['p0', 'p1','p2','p3','p4','p5'],
     'out': [('RUNTIME', float),('elapsed_sec', float)],
 }
 
 cs = CS.ConfigurationSpace(seed=1234)
 #batch_size
-p0= CSH.OrdinalHyperparameter(name='p0', sequence=[16,32,64,100,128,200,256,300,400,512], default_value=64)
-#epochs
-p1= CSH.OrdinalHyperparameter(name='p1', sequence=[1,2,4,8,12,14,16,20,22,24,30], default_value=14)
-#dropout rate
-p2= CSH.UniformFloatHyperparameter(name='p2', lower=0.1, upper=0.6, q=0.01, log = False)
-#optimizer
-p3= CSH.CategoricalHyperparameter(name='p3', choices=['RMSprop','Adam','SGD','Adamax','Adadelta','Adagrad','NAdam'], default_value='Adadelta')
 
-cs.add_hyperparameters([p0, p1, p2, p3])
+#Large Parameter Space
+p0= CSH.OrdinalHyperparameter(name='p0', sequence= [1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000])
+p1= CSH.OrdinalHyperparameter(name='p1', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 32, 40, 50, 80, 100, 160, 200, 400, 800])
+p2= CSH.OrdinalHyperparameter(name='p2', sequence= [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 25, 30, 40, 48, 50, 60, 75, 80, 100, 120, 150, 200, 240, 300, 400, 600, 1200])
+p3= CSH.OrdinalHyperparameter(name='p3', sequence= [1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000])
+p4= CSH.OrdinalHyperparameter(name='p4', sequence= [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 25, 30, 40, 48, 50, 60, 75, 80, 100, 120, 150, 200, 240, 300, 400, 600, 1200])
+p5= CSH.OrdinalHyperparameter(name='p5', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 32, 40, 50, 80, 100, 160, 200, 400, 800])
+    
+#ExtraLarge Parameter Space
+# p0= CSH.OrdinalHyperparameter(name='p0', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 40, 50, 80, 100, 125, 200, 250, 400, 500, 1000, 2000])
+# p1= CSH.OrdinalHyperparameter(name='p1', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 32, 40, 50, 64, 80, 100, 160, 200, 320, 400, 800, 1600])
+# p2= CSH.OrdinalHyperparameter(name='p2', sequence= [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32, 40, 48, 50, 60, 75, 80, 96, 100, 120, 150, 160, 200, 240, 300, 400, 480, 600, 800, 1200, 2400])
+# p3= CSH.OrdinalHyperparameter(name='p3', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 40, 50, 80, 100, 125, 200, 250, 400, 500, 1000, 2000])
+# p4= CSH.OrdinalHyperparameter(name='p4', sequence= [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32, 40, 48, 50, 60, 75, 80, 96, 100, 120, 150, 160, 200, 240, 300, 400, 480, 600, 800, 1200, 2400])
+# p5= CSH.OrdinalHyperparameter(name='p5', sequence= [1, 2, 4, 5, 8, 10, 16, 20, 25, 32, 40, 50, 64, 80, 100, 160, 200, 320, 400, 800, 1600])
+
+cs.add_hyperparameters([p0, p1, p2, p3, p4, p5])
 
 ytoptimizer = Optimizer(
     num_workers=num_sim_workers,
@@ -95,7 +106,7 @@ ytoptimizer = Optimizer(
 # Declare the gen_f that will generate points for the sim_f, and the various input/outputs
 gen_specs = {
     'gen_f': persistent_ytopt,
-    'out': [('p0', int, (1,)), ('p1', int, (1,)),('p2', float, (1,)),('p3', "<U24", (1,))],
+    'out': [('p0', int, (1,)), ('p1', int, (1,)),('p2', int, (1,)), ('p3', int, (1,)),('p4', int, (1,)), ('p5', int, (1,))],
     'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function
@@ -109,7 +120,7 @@ alloc_specs = {
 }
 
 # Specify when to exit. More options: https://libensemble.readthedocs.io/en/main/data_structures/exit_criteria.html
-exit_criteria = {'gen_max': int(user_args['max-evals'])}
+exit_criteria = {'sim_max': int(user_args['max-evals'])}
 
 # Added as a workaround to issue that's been resolved on develop
 persis_info = add_unique_random_streams({}, nworkers + 1)
@@ -118,15 +129,19 @@ persis_info = add_unique_random_streams({}, nworkers + 1)
 H, persis_info, flag = libE(sim_specs, gen_specs, exit_criteria, persis_info,
                             alloc_specs=alloc_specs, libE_specs=libE_specs)
 
+end = time.time()
+
 # Save History array to file
 if is_manager:
     print("\nlibEnsemble has completed evaluations.")
-    #save_libE_output(H, persis_info, __file__, nworkers)
+    print("Elapsed time = {}".format(end-start))
+    save_libE_output(H, persis_info, __file__, nworkers)
 
-    #print("\nSaving just sim_specs[['in','out']] to a CSV")
-    #H = np.load(glob.glob('*.npy')[0])
-    #H = H[H["sim_ended"]]
-    #dtypes = H[gen_specs['persis_in']].dtype
-    #b = np.vstack(map(list, H[gen_specs['persis_in']]))
-    #print(b)
-    #np.savetxt('results.csv',b, header=','.join(dtypes.names), delimiter=',',fmt=','.join(['%s']*b.shape[1]))
+    print("\nSaving just sim_specs[['in','out']] to a CSV")
+    H = np.load(glob.glob('*.npy')[0])
+    H = H[H["sim_ended"]]
+    # H = H[H["returned"]]
+    dtypes = H[gen_specs['persis_in']].dtype
+    b = np.vstack(map(list, H[gen_specs['persis_in']]))
+    print(b)
+    np.savetxt('results.csv',b, header=','.join(dtypes.names), delimiter=',',fmt=','.join(['%s']*b.shape[1]))
