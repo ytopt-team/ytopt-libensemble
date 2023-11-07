@@ -3,7 +3,7 @@ using ytopt and AutoTVM. See the details about [TVM](https://tvm.apache.org) and
 
 # Directory
 
-This directory includes 3mm, lu, cholesky.
+This directory includes 3mm, lu, and cholesky. See the [AI4S'23 paper](https://arxiv.org/pdf/2309.07235.pdf) for the details.
 
 ```
 3mm/
