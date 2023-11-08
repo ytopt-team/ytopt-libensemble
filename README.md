@@ -46,6 +46,7 @@ git clone https://github.com/ytopt-team/ConfigSpace.git
 cd ConfigSpace
 pip install -e .
 cd ..
+pip install configspace==0.7.1
 ```
 
 * Install [scikit-optimize](https://github.com/ytopt-team/scikit-optimize.git):
