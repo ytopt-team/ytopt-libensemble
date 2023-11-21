@@ -33,7 +33,10 @@ class Plopper:
                 for key, value in dictVal.items():
                     if key in modify_line:
                         if value != 'None': #For empty string options
-                            modify_line = modify_line.replace('#'+key, str(value))
+                            if  len(dictVal) > 10:
+                                modify_line = modify_line.replace('#'+key+' ', str(value))
+                            else:
+                                modify_line = modify_line.replace('#'+key, str(value))
 
                 if modify_line != line:
                     f2.write(modify_line)
