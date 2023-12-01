@@ -61,7 +61,7 @@ def persistent_ytopt(H, persis_info, gen_specs, libE_info):
                         if field not in entry.dtype.names:
                             continue
                         field_params[field] = entry[field][0]
-                results += [(field_params, entry['RUNTIME'])]
+                results += [(field_params, entry['objective'])]
             print('results: ', results)
             ytoptimizer.tell(results)
 

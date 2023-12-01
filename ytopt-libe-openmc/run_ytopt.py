@@ -99,7 +99,7 @@ sim_specs = {
     'in': ['p0', 'p1', 'p2',
             'p3_present',
             'p3', 'p4', 'p5', 'p6'],
-    'out': [('RUNTIME', float),('elapsed_sec', float)],
+    'out': [('objective', float),('elapsed_sec', float)],
 }
 
 # Declare the gen_f that will generate points for the sim_f, and the various input/outputs
@@ -109,7 +109,7 @@ gen_specs = {
             ('p3_present', bool, (1,)),
             ('p3', int, (1,)),
             ('p4', int, (1,)), ('p5', int, (1,)), ('p6', "<U24", (1,))],
-    'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
+    'persis_in': sim_specs['in'] + ['objective'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function
         'num_sim_workers': num_sim_workers,
