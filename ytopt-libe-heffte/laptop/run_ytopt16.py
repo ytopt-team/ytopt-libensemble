@@ -65,8 +65,8 @@ libE_specs['sim_dir_symlink_files'] = [here + f for f in ['speed3d.sh', 'exe.pl'
 # Declare the sim_f to be optimized, and the input/outputs
 sim_specs = {
     'sim_f': init_obj,
-    'in': ['p0', 'p1', 'p2', 'p3', 'p4', 'p5','p6', 'p7', 'p8', 'p9'],
-    'out': [('RUNTIME', float),('elapsed_sec', float)],
+    'in': ['p0', 'p1', 'p2', 'p3', 'p4', 'p5','p6', 'p7', 'p8', 'p9', 'p10'],
+    'out': [('objective', float),('elapsed_sec', float)],
 }
 
 cs = CS.ConfigurationSpace(seed=1234)
@@ -86,12 +86,14 @@ p5 = CSH.CategoricalHyperparameter(name='p5', choices=["-pencils", "-slabs"," "]
 p6 = CSH.CategoricalHyperparameter(name='p6', choices=["-r2c_dir 0", "-r2c_dir 1","-r2c_dir 2", " "], default_value=" ")
 # arg8
 p7 = CSH.CategoricalHyperparameter(name='p7', choices=["-ingrid 4 2 2", "-ingrid 2 2 4", "-ingrid 2 4 2","-ingrid 4 4 1", "-ingrid 8 2 1", "-ingrid 16 1 1"," "], default_value=" ")
-# arg9 
+# arg9
 p8 = CSH.CategoricalHyperparameter(name='p8', choices=["-outgrid 4 2 2", "-outgrid 2 2 4", "-outgrid 2 4 2","-outgrid 4 4 1","-outgrid 8 2 1", "-outgrid 16 1 1"," "], default_value=" ")
 #number of threads
 p9= CSH.UniformIntegerHyperparameter(name='p9', lower=2, upper=8, default_value=8, q=2)
+#gpu-aware
+p10 = CSH.CategoricalHyperparameter(name='p10', choices=["-no-gpu-aware", "-gpu-aware"], default_value="-gpu-aware")
 
-cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9])
+cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9,p10])
 
 ytoptimizer = Optimizer(
     num_workers=num_sim_workers,
@@ -107,10 +109,10 @@ ytoptimizer = Optimizer(
 # Declare the gen_f that will generate points for the sim_f, and the various input/outputs
 gen_specs = {
     'gen_f': persistent_ytopt,
-    'out': [('p0', "<U24", (1,)), ('p1', int, (1,)),('p2', "<U24", (1,)),('p3', "<U24", (1,)),
+    'out': [('p0', "<U24", (1,)), ('p1', int, (1,)),('p10', "<U24", (1,)), ('p2', "<U24", (1,)),('p3', "<U24", (1,)),
 		('p4', "<U24", (1,)),('p5', "<U24", (1,)),('p6', "<U24", (1,)),
-		('p7', "<U30", (1,)), ('p8', "<U30", (1,)), ('p9', int, (1,))],
-    'persis_in': sim_specs['in'] + ['RUNTIME'] + ['elapsed_sec'],
+		('p7', "<U30", (1,)), ('p8', "<U30", (1,)),('p9', int, (1,))],
+    'persis_in': sim_specs['in'] + ['objective'] + ['elapsed_sec'],
     'user': {
         'ytoptimizer': ytoptimizer,  # provide optimizer to generator function
         'num_sim_workers': num_sim_workers,

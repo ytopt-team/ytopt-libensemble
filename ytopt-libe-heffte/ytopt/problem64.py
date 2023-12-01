@@ -38,8 +38,10 @@ p7 = CSH.CategoricalHyperparameter(name='p7', choices=["-ingrid 4 4 4", "-ingrid
 p8 = CSH.CategoricalHyperparameter(name='p8', choices=["-outgrid 4 4 4", "-outgrid 8 4 2", "-outgrid 4 8 2","-outgrid 2 4 8","-outgrid 16 2 2", "-outgrid 32 2 1", "-outgrid 64 1 1"," "], default_value=" ")
 #number of threads
 p9= CSH.UniformIntegerHyperparameter(name='p9', lower=2, upper=8, default_value=8, q=2)
+#gpu-aware
+p10 = CSH.CategoricalHyperparameter(name='p10', choices=["-no-gpu-aware", "-gpu-aware"], default_value="-gpu-aware")
 
-cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9])
+cs.add_hyperparameters([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10])
 
 # problem space
 task_space = None
@@ -55,7 +57,7 @@ kernel_idx = dir_path.rfind('/')
 kernel = dir_path[kernel_idx+1:]
 obj = Plopper(dir_path+'/speed3d.sh',dir_path)
 
-x1=['p0','p1','p2','p3','p4','p5','p6','p7','p8','p9']
+x1=['p0','p1','p2','p3','p4','p5','p6','p7','p8','p9','p10']
 
 def myobj(point: dict):
 
@@ -63,15 +65,15 @@ def myobj(point: dict):
     x = np.asarray_chkfinite(x)  # ValueError if any NaN or Inf
     #if str(point[x1[3]])=='nan':
         #point[x1[3]]=' '
-    value = [point[x1[0]],point[x1[1]],point[x1[2]],point[x1[3]],point[x1[4]],point[x1[5]],point[x1[6]],point[x1[7]],point[x1[8]],point[x1[9]]]
+    value = [point[x1[0]],point[x1[1]],point[x1[2]],point[x1[3]],point[x1[4]],point[x1[5]],point[x1[6]],point[x1[7]],point[x1[8]],point[x1[9]],point[x1[10]]]
     print('CONFIG:',point)
     #print(point[x1[4]])
-    #os.system('./processexe.pl exe.pl ' + str(point[x1[4]]))
+    os.system('./processexe.pl exe.pl ')
     #execmd = './processexe.pl exe.pl ' + str(point[x1[4]])+ ' '+ str(point[x1[5]])+ ' '+ str(point[x1[6]])
     #print(execmd)
     #os.system(execmd)
-    #os.environ["OMP_NUM_THREADS"] = str(point[x1[4]])
-    params = ["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9"]
+    os.environ["OMP_NUM_THREADS"] = str(point[x1[9]])
+    params = ["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9","P10"]
 
     result = obj.findRuntime(value, params)
     return result

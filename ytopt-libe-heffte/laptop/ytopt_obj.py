@@ -17,7 +17,7 @@ def init_obj(H, persis_info, sim_specs, libE_info):
 
     y = myobj(point, sim_specs['in'], libE_info['workerID'])  # ytopt objective wants a dict
     H_o = np.zeros(2, dtype=sim_specs['out'])
-    H_o['RUNTIME'] = y
+    H_o['objective'] = y
     H_o['elapsed_sec'] = time.time() - start_time
 
     return H_o, persis_info
@@ -27,7 +27,7 @@ def myobj(point: dict, params: list, workerID: int):
         obj = Plopper('./speed3d.sh', './')
         x = np.asarray_chkfinite(x)
         value = [point[param] for param in params]
-        #print(value)
+        print(value)
         os.system("./processexe.pl exe.pl " +str(value[9]))
         os.environ["OMP_NUM_THREADS"] = str(value[9])
         params = [i.upper() for i in params]
