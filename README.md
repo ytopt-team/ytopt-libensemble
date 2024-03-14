@@ -105,3 +105,12 @@ Note: For the diagnosis purpose, look at the log files (*.log) or text files (*.
 * [Autotuning the MPI/OpenMP version of XSBench](https://github.com/ytopt-team/ytopt-libensemble/tree/main/ytopt-libe-xsbench)
 * [Autotuning the GPU version of OpenMC](https://github.com/ytopt-team/ytopt-libensemble/tree/main/ytopt-libe-openmc)
 * [Autotuning Deep Learning Applications](https://github.com/ytopt-team/ytopt-libensemble/tree/develop1/ytopt-libe-deeplearning)
+
+# Publications
+* X. Wu, J. R. Tramm, J. Larson, J.-L. Navarro, P. Balaprakash, B. Videau, M. Kruse, P. Hovland, V. Taylor, and M. Hall, "Integrating ytopt and libEnsemble to Autotune OpenMC", DOI: [10.48550/arXiv.2402.09222](https://doi.org/10.48550/arXiv.2402.09222)
+* X. Wu, P. Paramasivam, and V. Taylor, Autotuning Apache TVM-based Scientific Applications Using Bayesian Optimization, SC23 Workshop on Artificial Intelligence and Machine Learning for Scientific Applications (AI4S’23), Nov. 13, 2023, Denver, CO. https://arxiv.org/pdf/2309.07235.pdf.
+
+# Acknowledgements
+* SciDAC RAPIDS and OASIS, U.S. Department of Energy ASCR (2024--present)
+* PROTEAS-TUNE, U.S. Department of Energy ASCR Exascale Computing Project (2018--2023)
+
