@@ -107,7 +107,7 @@ Note: For the diagnosis purpose, look at the log files (*.log) or text files (*.
 * [Autotuning Deep Learning Applications](https://github.com/ytopt-team/ytopt-libensemble/tree/develop1/ytopt-libe-deeplearning)
 
 # Publications
-* Xingfu Wu and Tupendra Oli and ustin H. Qian and Valerie Taylor and Mark C. Hersam and Vinod K. Sangwan, "An Autotuning-based Optimization Framework for Mixed-kernel SVM Classifications in Smart Pixel Datasets and Heterojunction Transistors", DOI: [10.48550/arXiv.2406.18445](https://arxiv.org/pdf/2406.18445), 2024.
+* X. Wu and T. Oli and J. H. Qian and V. Taylor and M. C. Hersam and V. K. Sangwan, "An Autotuning-based Optimization Framework for Mixed-kernel SVM Classifications in Smart Pixel Datasets and Heterojunction Transistors", DOI: [10.48550/arXiv.2406.18445](https://arxiv.org/pdf/2406.18445), 2024.
 * X. Wu, J. R. Tramm, J. Larson, J.-L. Navarro, P. Balaprakash, B. Videau, M. Kruse, P. Hovland, V. Taylor, and M. Hall, "Integrating ytopt and libEnsemble to Autotune OpenMC", DOI: [10.48550/arXiv.2402.09222](https://doi.org/10.48550/arXiv.2402.09222), 2024.
 * X. Wu, P. Paramasivam, and V. Taylor, "Autotuning Apache TVM-based Scientific Applications Using Bayesian Optimization", SC23 Workshop on Artificial Intelligence and Machine Learning for Scientific Applications (AI4S’23), Nov. 13, 2023, Denver, CO. https://arxiv.org/pdf/2309.07235.pdf.
 
