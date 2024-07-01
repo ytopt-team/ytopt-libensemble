@@ -1,5 +1,0 @@
-p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,RUNTIME,elapsed_sec
-float,128, , , , , , , ,8,-1.0,3.287459135055542
-p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,RUNTIME,elapsed_sec
-float,128, , , , , , , ,8,-1.0,3.212707042694092
-double,512,-reorder,-a2av,-p2p,-pencils,-r2c_dir 1, , ,4,-1.0,3.224313974380493
