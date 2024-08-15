@@ -22,6 +22,8 @@ ytopt-libe-openmc/
     Autotuning ECP app OpenMC
 ytopt-libe-tvm/
     Autotuning Apache TVM (Tensor Virtual Machine)-based scientific applications (3mm, lu, cholesky)
+ytopt-libe-svms/
+    Autotuning SVM (Support Vector Machine)-based scientific simulations
 ```
 
 # Installation instructions
