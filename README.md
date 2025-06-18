@@ -7,7 +7,7 @@ By integrating libensemble with ytopt, the autotuning framework ytopt-libe not o
 
 # Directory
 
-This directory includes the ECP apps, ECP proxy apps, and deep learning applications in pytorch/tensorflow autotuned using ytopt-libe and ytopt only.
+This directory is already merged into ytopt under the folder [ytopt-libe](https://github.com/ytopt-team/ytopt/tree/main/ytopt-libe). No more updates will be made in the repo. It includes the ECP apps, ECP proxy apps, and deep learning applications in pytorch/tensorflow autotuned using ytopt-libe and ytopt only.
 
 ```
 ytopt-libe-deeplearning/
